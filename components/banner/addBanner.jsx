@@ -2,11 +2,12 @@ import { createCategory } from "@/service/category";
 import { Button, Form, Input, Modal } from "antd";
 import React from "react";
 import UploadFile from "../common/UploadFile";
+import { createBanner } from "@/service/banner";
 
 function AddBanner({ open, refresh, closeAdd }) {
   const [form] = Form.useForm();
   const submit = async (e) => {
-    const response = await createCategory(e);
+    const response = await createBanner(e);
     if (response.data && response.data.status === 200) {
       refresh();
       onCloseAdd();
