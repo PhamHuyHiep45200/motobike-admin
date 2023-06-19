@@ -12,7 +12,7 @@ export async function createCategory(data) {
   });
 }
 export async function updateCategory(id, data) {
-  return request(`/category/update-user/${id}`, {
+  return request(`/category/update/${id}`, {
     method: "PUT",
     data,
   });
