@@ -98,7 +98,9 @@ function Moto() {
       key: "name",
       render: (e) => (
         <span>
-          {category.length ? category.find((c) => c.id === e.categoryId)?.name : 0}
+          {category.length
+            ? category.find((c) => c.id === e.categoryId)?.name
+            : 0}
         </span>
       ),
       width: 200,
@@ -180,19 +182,19 @@ function Moto() {
       console.log(response);
     }
   };
-  const handleUnDelete = async(id)=>{
-    const response =await unDeleteMoto(id)
-    if(response.data && response.data.status===200){
-      getAll()
-    }else{
-      console.log(response)
+  const handleUnDelete = async (id) => {
+    const response = await unDeleteMoto(id);
+    if (response.data && response.data.status === 200) {
+      getAll();
+    } else {
+      console.log(response);
     }
-  }
+  };
   return (
     <div>
       <div className="mb-5">
         <Button size="large" onClick={() => setAdd(true)}>
-          Thêm hãng xe
+          Thêm xe
         </Button>
       </div>
       <AddUser
