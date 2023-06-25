@@ -11,6 +11,13 @@ export async function createUser(data) {
     data
   });
 }
+
+export async function userAdmin() {
+  return request(`/user/admin`, {
+    method: "GET",
+  });
+}
+
 export async function updateUser(id,data) {
   return request(`/user/update-user/${id}`, {
     method: "PUT",
