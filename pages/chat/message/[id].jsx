@@ -12,7 +12,7 @@ function Message() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:5001/");
+    const newSocket = io(process.env.NEXT_PUBLIC_URL_SERVER);
     setSocket(newSocket);
 
     newSocket.on("chat", (data) => {
@@ -39,11 +39,13 @@ function Message() {
   };
 
   useEffect(() => {
-    ref.current.scrollIntoView({ behavior: 'smooth', block: 'end'});
     if (router.query) {
       getAllMess();
     }
   }, [router.query]);
+  useEffect(()=>{
+    ref.current.scrollTop = ref.current.scrollHeight
+  },[mes])
   const getAllMess = async () => {
     const { id } = router.query;
     const params = {
@@ -57,8 +59,8 @@ function Message() {
   };
   return (
     <div className="flex justify-center relative items-center h-[85vh] w-[80%] bg-[#eaeaea] pb-[60px]">
-      <div className="h-full w-full px-[100px] overflow-auto justify-end" ref={ref}>
-        <div className="min-h-[76vh] max-h-[76vh] bg-[#eaeaea]">
+      <div className="max-h-[76vh] w-full px-[100px] overflow-auto justify-end" ref={ref}>
+        <div className="min-h-[76vh]  flex flex-col justify-end bg-[#eaeaea]">
           {mes.length > 0 &&
             mes.map((e) => {
               const checkSendUser =

@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
     };
   }, [noti]);
   useEffect(() => {
-    const newSocket = io("http://localhost:5001/");
+    const newSocket = io(process.env.NEXT_PUBLIC_URL_SERVER);
     setSocket(newSocket);
 
     newSocket.on("notify", (data) => {
