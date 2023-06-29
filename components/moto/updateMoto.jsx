@@ -32,6 +32,8 @@ function UpdateUser({ open, refresh, closeAdd, data, category }) {
         yearOfManufacture: moment(data.yearOfManufacture),
         listThumbnail: JSON.parse(data.listThumbnail),
         color: data.color,
+        licensePlates: data.licensePlates,
+        deposit: data.deposit,
         description: data.description,
         licensePates: data.licensePates,
         rentCost: data.rentCost,
@@ -84,8 +86,22 @@ function UpdateUser({ open, refresh, closeAdd, data, category }) {
           <Input size="large" />
         </Form.Item>
         <Form.Item
+          label="Biển số xe"
+          name="licensePlates"
+          rules={[{ required: true, message: "Không được bỏ trống!" }]}
+        >
+          <Input size="large" />
+        </Form.Item>
+        <Form.Item
           label="Giá thuê / Ngày"
           name="rentCost"
+          rules={[{ required: true, message: "Không được bỏ trống!" }]}
+        >
+          <InputNumber size="large" />
+        </Form.Item>
+        <Form.Item
+          label="Đặt cọc (%)"
+          name="deposit"
           rules={[{ required: true, message: "Không được bỏ trống!" }]}
         >
           <InputNumber size="large" />
